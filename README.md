@@ -1,65 +1,80 @@
-# astroerp-websnippets README
+✨ Snippets da Extensão
 
-This is the README for your extension "astroerp-websnippets". After writing up a brief description, we recommend including the following sections.
+Esta extensão adiciona snippets prontos para agilizar a criação de código padrão no projeto, seguindo o padrão de arquitetura do sistema ERP (Use Cases, Endpoints, Paths e Schemas Zod).
 
-## Features
+🧠 UseCase Class Template
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Prefixo: usc
 
-For example if there is an image subfolder under your extension project workspace:
+Cria uma classe UseCase com imports padrão e nome igual ao arquivo.
 
-\!\[feature X\]\(images/feature-x.png\)
+import endpoints from "src/application/utils/endpoints";
+import UseCase from "../../UseCase";
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+export default class NomeDoArquivo extends UseCase {
+    async execute() {
+        // lógica aqui
+    }
+}
 
-## Requirements
+🧱 TypeScript Class Template
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Prefixo: tsclass
 
-## Extension Settings
+Cria uma classe TypeScript simples com o mesmo nome do arquivo.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+export default class NomeDoArquivo {
+    // corpo da classe
+}
 
-For example:
+🌐 Endpoint CRUD Template
 
-This extension contributes the following settings:
+Prefixo: endpoint
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Cria um bloco de endpoints CRUD padrão, com placeholders automáticos para o nome da entidade e ID.
 
-## Known Issues
+entity: {
+    list: 'erp/v1/entity',
+    create: 'erp/v1/entity',
+    delete: (id: number) => `erp/v1/entity/${id}`,
+    read: (id: number) => `erp/v1/entity/${id}`,
+    update: (id: number) => `erp/v1/entity/${id}`,
+},
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+🗺️ Paths CRUD Template
 
-## Release Notes
+Prefixo: path
 
-Users appreciate release notes as you update your extension.
+Cria um conjunto de rotas de navegação padrão (root, list, edit, editPath, create) para uso em paths.ts.
 
-### 1.0.0
+entity: {
+    root: ROOTS.ENTITY,
+    list: `${ROOTS.ENTITY}/list`,
+    edit: (id: string) => `${ROOTS.ENTITY}/edit/${id}`,
+    editPath: `${ROOTS.ENTITY}/edit/:id`,
+    create: `${ROOTS.ENTITY}/new`,
+},
 
-Initial release of ...
+📘 Zod Schema Template
 
-### 1.0.1
+Prefixo: zschema
 
-Fixed issue #.
+Cria automaticamente um Zod Schema com base no nome do arquivo, junto com o tipo inferido.
 
-### 1.1.0
+import zod from 'src/utils/zod'
 
-Added features X, Y, and Z.
+const NomeDoArquivo = zod.object({
+    // campos aqui
+})
 
----
+type NomeDoArquivoType = zod.infer<typeof NomeDoArquivo>
 
-## Working with Markdown
+export type { NomeDoArquivoType }
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+export { NomeDoArquivo }
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+💡 Dica
 
-## For more information
+O nome ${TM_FILENAME_BASE} é substituído automaticamente pelo nome do arquivo atual.
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Use ${1}, ${2} e outros placeholders para navegar rapidamente entre os pontos editáveis com Tab.

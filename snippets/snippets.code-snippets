@@ -1,1 +1,68 @@
-{}
+{
+    "UseCase Class Template": {
+        "prefix": "usc",
+        "body": [
+            "import endpoints from \"src/application/utils/endpoints\";",
+            "import UseCase from \"../../UseCase\";",
+            "",
+            "export default class ${TM_FILENAME_BASE} extends UseCase {",
+            "    async execute() {",
+            "        $1",
+            "    }",
+            "}"
+        ],
+        "description": "Cria uma classe UseCase com imports padrão e nome igual ao arquivo"
+    },
+    "TypeScript Class Template": {
+        "prefix": "tsclass",
+        "body": [
+            "export default class ${TM_FILENAME_BASE} {",
+            "    $1",
+            "}"
+        ],
+        "description": "Cria uma classe TypeScript simples com nome igual ao arquivo"
+    },
+    "Endpoint CRUD Template": {
+        "prefix": "endpoint",
+        "body": [
+            "${1:entity}: {",
+            "    list: 'erp/v1/${1}',",
+            "    create: 'erp/v1/${1}',",
+            "    delete: (id: number) => `erp/v1/${1}/\\${id}`,",
+            "    read: (id: number) => `erp/v1/${1}/\\${id}`,",
+            "    update: (id: number) => `erp/v1/${1}/\\${id}`,",
+            "},"
+        ],
+        "description": "Cria um bloco de endpoints CRUD padrão (list, create, delete, read, update) com cursor no nome do recurso"
+    },
+    "Paths CRUD Template": {
+        "prefix": "path",
+        "body": [
+            "${1:entity}: {",
+            "    root: ROOTS.${2:ENTITY},",
+            "    list: `\\${ROOTS.${2:ENTITY}}/list`,",
+            "    edit: (id: string) => `\\${ROOTS.${2:ENTITY}}/edit/\\${id}`,",
+            "    editPath: `\\${ROOTS.${2:ENTITY}}/edit/:id`,",
+            "    create: `\\${ROOTS.${2:ENTITY}}/new`,",
+            "},"
+        ],
+        "description": "Cria um bloco padrão de paths (root, list, edit, editPath, create)"
+    },
+    "Zod Schema Template": {
+        "prefix": "zschema",
+        "body": [
+            "import zod from 'src/utils/zod'",
+            "",
+            "const ${TM_FILENAME_BASE} = zod.object({",
+            "    $1",
+            "})",
+            "",
+            "type ${TM_FILENAME_BASE}Type = zod.infer<typeof ${TM_FILENAME_BASE}>",
+            "",
+            "export type { ${TM_FILENAME_BASE}Type }",
+            "",
+            "export { ${TM_FILENAME_BASE} }"
+        ],
+        "description": "Cria um schema Zod baseado no nome do arquivo"
+    }
+}
