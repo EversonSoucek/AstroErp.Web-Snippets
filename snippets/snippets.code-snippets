@@ -43,10 +43,10 @@
             "    list: `\\${ROOTS.${2:ENTITY}}/list`,",
             "    edit: (id: string) => `\\${ROOTS.${2:ENTITY}}/edit/\\${id}`,",
             "    editPath: `\\${ROOTS.${2:ENTITY}}/edit/:id`,",
-            "    create: `\\${ROOTS.${2:ENTITY}}/new`,",
+            "    new: `\\${ROOTS.${2:ENTITY}}/new`,",
             "},"
         ],
-        "description": "Cria um bloco padrão de paths (root, list, edit, editPath, create)"
+        "description": "Cria um bloco padrão de paths (root, list, edit, editPath, new)"
     },
     "Zod Schema Template": {
         "prefix": "zschema",

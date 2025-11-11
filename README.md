@@ -1,13 +1,15 @@
-✨ Snippets da Extensão
+# 🚀 AstroERP Web Snippets
 
-Esta extensão adiciona snippets prontos para agilizar a criação de código padrão no projeto, seguindo o padrão de arquitetura do sistema ERP (Use Cases, Endpoints, Paths e Schemas Zod).
+Esta extensão adiciona **snippets prontos** para agilizar a criação de código padrão no projeto, seguindo o padrão de arquitetura do sistema ERP (Use Cases, Endpoints, Paths e Schemas Zod).
 
-🧠 UseCase Class Template
+---
 
-Prefixo: usc
+## 🧠 UseCase Class Template
 
-Cria uma classe UseCase com imports padrão e nome igual ao arquivo.
+**Prefixo:** `usc`  
+Cria uma classe **UseCase** com imports padrão e nome igual ao arquivo.
 
+```typescript
 import endpoints from "src/application/utils/endpoints";
 import UseCase from "../../UseCase";
 
@@ -20,7 +22,6 @@ export default class NomeDoArquivo extends UseCase {
 🧱 TypeScript Class Template
 
 Prefixo: tsclass
-
 Cria uma classe TypeScript simples com o mesmo nome do arquivo.
 
 export default class NomeDoArquivo {
@@ -52,7 +53,7 @@ entity: {
     list: `${ROOTS.ENTITY}/list`,
     edit: (id: string) => `${ROOTS.ENTITY}/edit/${id}`,
     editPath: `${ROOTS.ENTITY}/edit/:id`,
-    create: `${ROOTS.ENTITY}/new`,
+    new: `${ROOTS.ENTITY}/new`,
 },
 
 📘 Zod Schema Template
